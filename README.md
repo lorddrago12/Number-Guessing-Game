@@ -1,105 +1,109 @@
 # Number Guessing Game 🎯
 
-This project is a classic **number guessing game** written in Python. It’s a simple terminal-based game that demonstrates core programming concepts like loops, conditionals, user input, and random number generation.
-
-This README is written so **future you** and **anyone learning Python** can quickly understand what the game does and how the logic works.
+A terminal-based number guessing game written in Python that lets the player choose a difficulty level before playing. The game challenges the player to guess a randomly generated number while providing feedback and tracking the number of attempts.
 
 ---
 
 ## 📌 What This Project Is
 
-A console game where:
+This is an interactive console game where:
 
-* The computer randomly chooses a number between 1 and 100
-* The player keeps guessing until they find the correct number
-* The program gives hints if the guess is too high or too low
-* The total number of guesses is counted and displayed
+* The player selects a difficulty level
+* A random number is generated based on the chosen difficulty
+* The player keeps guessing until the correct number is found
+* The game gives hints if the guess is too high or too low
+* The total number of guesses is counted
 
-It’s a beginner-friendly project that still teaches important fundamentals.
+It’s a simple but solid project that demonstrates control flow and game logic in Python.
 
 ---
 
-## 🎯 Purpose of This Project
+## 🎮 Difficulty Levels
 
-You built this game to:
+The game offers three difficulty modes:
 
-* Practice loops (`while True`)
-* Work with conditional logic (`if / elif / else`)
-* Use the `random` module
-* Handle user input and type conversion
-* Track game state (number of guesses)
+* **Easy** → Guess a number between **1 and 100**
+* **Medium** → Guess a number between **1 and 200**
+* **Hard** → Guess a number between **1 and 300**
 
-This is one of the best starter projects for understanding program flow.
+Choosing a higher difficulty increases the range and makes the game more challenging.
 
 ---
 
 ## ✨ Features
 
-* Random secret number each run
-* Unlimited guesses until correct
-* Helpful feedback (too high / too low)
-* Guess counter
-* Clean and simple logic
+* Difficulty selection system
+* Random number generation based on difficulty
+* Unlimited guesses until success
+* Helpful feedback for each guess
+* Guess counter displayed at the end
 
 ---
 
-## 🧠 Core Concepts Used
+## 🧠 Concepts Used
 
-* **Random number generation** (`random.randint`)
-* **Infinite loop** with a break condition
-* **User input handling**
-* **Integer comparison**
-* **State tracking** (guess count)
-
----
-
-## 🏗️ How It Works
-
-1. A random number between 1 and 100 is generated
-2. The program asks the user to guess
-3. Each guess is compared to the secret number
-4. The program responds with a hint
-5. When the guess is correct, the loop ends
-6. The total number of guesses is displayed
-
-This loop continues until the correct answer is found.
+* `random.randint()` for number generation
+* Conditional statements (`if / elif / else`)
+* Infinite loops with `while True`
+* User input handling
+* State tracking using variables
 
 ---
 
-## 🔄 Example Game Flow
+## 🏗️ How The Game Works
+
+1. The game displays a difficulty menu
+2. The player selects a difficulty level
+3. A secret number is generated within the chosen range
+4. The player enters guesses
+5. The game responds with hints
+6. When guessed correctly, the game ends and shows total attempts
+
+This loop continues until the correct number is guessed.
+
+---
+
+## 🔄 Example Gameplay
 
 ```
-Enter Your Guess: 50
+*****Number Guessing Game!*****
+Choose Your Difficulty
+1. Easy 1 - 100
+2. Medium 1 - 200
+3. Hard 1 - 300
+
+Enter Your difficulty: 2
+Enter Your Guess: 150
 Your Guess is too high, Try again!
 
-Enter Your Guess: 25
+Enter Your Guess: 90
 Your guess is too low, Try again!
 
-Enter Your Guess: 37
+Enter Your Guess: 120
 You guessed the correct number in 3 guesses.
 ```
 
 ---
 
-## 📚 What Someone Can Learn From This
+## 📚 Learning Value
 
-* How loops keep programs running
-* How decisions are made in code
-* How to validate guesses logically
-* How to build simple interactive games
+Someone reading or modifying this project can learn:
 
-This project is a great stepping stone toward more advanced games.
+* How to structure a simple game
+* How difficulty systems work
+* How loops control game flow
+* How feedback improves user experience
 
 ---
 
 ## 🚀 Possible Improvements
 
-* Add input validation (handle non-numbers)
-* Add difficulty levels (range changes)
-* Limit the number of guesses
+* Input validation for non-numeric input
+* Separate functions for each difficulty
 * Add replay option
-* Add score tracking
+* Add score tracking or leaderboard
+* Refactor repeated logic into reusable code
 
 ---
 
-This project is a clean and classic example of **learning Python through games**.
+This project is a strong example of building **interactive logic-driven programs** in Python.
