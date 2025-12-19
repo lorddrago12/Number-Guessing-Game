@@ -1,7 +1,7 @@
 import random
 
 player_guesses = 0
-
+max_gusses = 7
 
 def main():
     """Run one round of the number guessing game."""
@@ -35,6 +35,14 @@ def main():
 
     # guessing loop
     while True:
+        # Check if max guesses exceeded
+        if player_guesses >= max_gusses:
+            print(f"You've reached the maximum number of guesses ({max_gusses}). The number was {secret_number}.")
+            return False  # Game lost
+        
+        remaining = max_gusses - player_guesses
+        print(f"Guesses remaining: {remaining}")
+        
         try:
             player_guess = int(input("Enter your guess: "))
         except ValueError:
@@ -49,13 +57,12 @@ def main():
             print("Your guess is too low, try again!")
         else:
             print(f"You guessed the correct number in {player_guesses} guesses.")
-            break  # exit the guessing loop when correct
+            return True  # Game won
 
 
 # main game loop with restart
 while True:
     main()
     restart = input("Do you want to play again? Yes/No: ")
-
     if restart.lower() != "yes":
         break
