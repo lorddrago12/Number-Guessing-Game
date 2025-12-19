@@ -1,6 +1,6 @@
 # Number Guessing Game 🎯
 
-A terminal-based number guessing game written in Python that includes **difficulty levels**, a **guess limit**, **input validation**, and a **replay system**. This version is more structured and polished, making it easy to understand, play, and extend.
+A feature-rich terminal-based number guessing game written in Python. This version includes **difficulty levels**, a **guess limit**, **input validation**, a **replay system**, and a persistent **best score tracker** saved using a JSON file.
 
 ---
 
@@ -8,13 +8,14 @@ A terminal-based number guessing game written in Python that includes **difficul
 
 This is an interactive console game where:
 
-* The player chooses a difficulty level
-* A random secret number is generated based on that difficulty
-* The player has a limited number of guesses to find the number
-* The game gives feedback after every guess
-* The player can restart the game after each round
+* The player selects a difficulty level
+* A random secret number is generated
+* The player has a limited number of guesses
+* The game provides feedback after each guess
+* The best (lowest) number of guesses is saved permanently
+* The player can replay the game multiple times
 
-It’s a clean example of game logic, control flow, and user input handling in Python.
+It’s a complete example of combining game logic with file storage.
 
 ---
 
@@ -22,11 +23,11 @@ It’s a clean example of game logic, control flow, and user input handling in P
 
 The game offers three difficulty modes:
 
-* **Easy** → 1 to 100
-* **Medium** → 1 to 200
-* **Hard** → 1 to 300
+* **Easy** → Numbers between **1 and 100**
+* **Medium** → Numbers between **1 and 200**
+* **Hard** → Numbers between **1 and 300**
 
-Higher difficulty increases the range, making the game more challenging.
+Each difficulty increases the guessing range, making the game more challenging.
 
 ---
 
@@ -34,31 +35,44 @@ Higher difficulty increases the range, making the game more challenging.
 
 * The player has a maximum of **7 guesses** per round
 * Remaining guesses are displayed each turn
-* If the limit is reached, the game ends and reveals the correct number
+* If the limit is reached, the game ends and reveals the secret number
 
-This adds pressure and makes the game more engaging.
+---
+
+## 🏆 Best Score System
+
+* The game tracks the **best score** (fewest guesses)
+* The best score is saved in a file called:
+
+  ```
+  best score.json
+  ```
+* The score persists even after closing the program
+* If a new best score is achieved, it replaces the old one
+
+This introduces basic **file handling and persistence**.
 
 ---
 
 ## ✨ Features
 
-* Difficulty selection system
+* Difficulty selection
 * Guess limit enforcement
-* Input validation for difficulty and guesses
-* Feedback for each guess (too high / too low)
-* Replay option after each game
+* Input validation (no crashes on invalid input)
+* Replay option
+* Persistent best score tracking
 * Clean, structured code using functions
 
 ---
 
 ## 🧠 Concepts Demonstrated
 
-* Functions and return values
-* Loops (`while True`)
-* Conditional logic (`if / elif / else`)
-* Exception handling (`try / except`)
 * Random number generation
-* State tracking with variables
+* Functions and return values
+* Loops and control flow
+* Exception handling (`try / except`)
+* File I/O using JSON
+* State persistence across runs
 
 ---
 
@@ -66,13 +80,12 @@ This adds pressure and makes the game more engaging.
 
 1. The game displays a difficulty menu
 2. The player selects a valid difficulty
-3. A secret number is generated within the chosen range
+3. A secret number is generated
 4. The player makes guesses (up to 7)
-5. The game provides hints after each guess
+5. Feedback is given after each guess
 6. The game ends with a win or loss
-7. The player is asked if they want to play again
-
-This loop continues until the player chooses to stop.
+7. Best score is checked and saved if needed
+8. The player can choose to play again
 
 ---
 
@@ -97,6 +110,7 @@ Your guess is too low, try again!
 Guesses remaining: 5
 Enter your guess: 37
 You guessed the correct number in 3 guesses.
+🎉 New best score: 3 guesses!
 
 Do you want to play again? Yes/No: no
 ```
@@ -105,22 +119,22 @@ Do you want to play again? Yes/No: no
 
 ## 📚 Learning Value
 
-Someone studying this project can learn:
+From this project, someone can learn:
 
-* How to design a complete console game
-* How to validate user input properly
-* How to limit attempts logically
-* How to structure code using functions
-* How to build replayable programs
+* How to design a full console game
+* How to persist data using JSON
+* How to handle invalid user input safely
+* How to structure Python programs cleanly
+* How to add replayable game mechanics
 
 ---
 
 ## 🚀 Ideas for Future Improvements
 
 * Difficulty-based guess limits
-* Score system or leaderboard
-* Timed mode
-* Hint system
-* GUI version using Tkinter or PySimpleGUI
+* Separate best scores per difficulty
+* Player name support
+* Leaderboard system
+* GUI version of the game
 
 ---
