@@ -1,7 +1,31 @@
+import json
 import random
+import os
 
 player_guesses = 0
 max_gusses = 7
+BEST_SCORE_FILE = "best score.json"
+
+
+def load_best_score():
+    """Load best score from JSON file."""
+    try:
+        with open("best score.json", 'r') as f:  # Add quotes around the filename
+            data = json.load(f)
+            best_score = data.get("best_score", None)  # Use None instead of []
+            return best_score
+    except FileNotFoundError:
+        return None  # Return None if file doesn't exist
+    except json.JSONDecodeError:
+        return None  # Return None if JSON is invalid
+
+
+def save_best_score(score):
+    """Save best score to JSON file."""
+    data = {"best_score": score}
+    with open("best score.json", 'w') as f:
+        json.dump(data, f, indent=2)
+
 
 def main():
     """Run one round of the number guessing game."""
@@ -57,6 +81,19 @@ def main():
             print("Your guess is too low, try again!")
         else:
             print(f"You guessed the correct number in {player_guesses} guesses.")
+            
+            # Load the current best score
+            best_score = load_best_score()
+            
+            # Check if this is a new best score (or if no best score exists yet)
+            if best_score is None or player_guesses < best_score:
+                # Save the new best score
+                save_best_score(player_guesses)
+                print(f"🎉 New best score: {player_guesses} guesses!")
+            else:
+                # Show the current best score
+                print(f"Current Best score: {best_score} guesses")
+            
             return True  # Game won
 
 
