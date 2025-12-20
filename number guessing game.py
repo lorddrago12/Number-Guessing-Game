@@ -3,7 +3,6 @@ import random
 import os
 
 player_guesses = 0
-max_gusses = 7
 BEST_SCORE_FILE = "best score.json"
 
 
@@ -38,7 +37,7 @@ def main():
     print("2. Medium (1 - 200)")
     print("3. Hard   (1 - 300)")
 
-    # choose difficulty safely
+    # choose difficulty
     while True:
         try:
             player_difficulty = int(input("Enter your difficulty (1, 2, or 3): "))
@@ -51,10 +50,13 @@ def main():
 
     # set range based on difficulty
     if player_difficulty == 1:
+        max_gusses = 7
         secret_number = random.randint(1, 100)
     elif player_difficulty == 2:
+        max_gusses = 6
         secret_number = random.randint(1, 200)
     else:
+        max_gusses = 5
         secret_number = random.randint(1, 300)
 
     # guessing loop
@@ -92,7 +94,7 @@ def main():
                 print(f"🎉 New best score: {player_guesses} guesses!")
             else:
                 # Show the current best score
-                print(f"Current Best score: {best_score} guesses")
+                print(f"Best score: {best_score} guesses")
             
             return True  # Game won
 
