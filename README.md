@@ -1,6 +1,8 @@
 # Number Guessing Game 🎯
 
-A feature-rich terminal-based number guessing game written in Python. This version includes **difficulty levels**, a **guess limit**, **input validation**, a **replay system**, and a persistent **best score tracker** saved using a JSON file.
+A polished terminal-based number guessing game written in Python. This version features **difficulty-based rules**, **dynamic guess limits**, **input validation**, **replay support**, and a **persistent best score system per difficulty** stored in a JSON file.
+
+This README explains the project clearly for **future you** and **anyone else** who wants to understand or learn from the code.
 
 ---
 
@@ -8,84 +10,91 @@ A feature-rich terminal-based number guessing game written in Python. This versi
 
 This is an interactive console game where:
 
-* The player selects a difficulty level
-* A random secret number is generated
-* The player has a limited number of guesses
-* The game provides feedback after each guess
-* The best (lowest) number of guesses is saved permanently
+* The player selects a difficulty level (Easy, Medium, Hard)
+* A random secret number is generated based on the chosen difficulty
+* Each difficulty has its own guess limit
+* The player receives feedback after every guess
+* Best scores are saved separately for each difficulty
+* Scores persist even after closing the program
 * The player can replay the game multiple times
 
-It’s a complete example of combining game logic with file storage.
+This project demonstrates how game logic and persistent storage work together.
 
 ---
 
-## 🎮 Difficulty Levels
+## 🎮 Difficulty Levels & Rules
 
-The game offers three difficulty modes:
+Each difficulty changes both the number range **and** the allowed guesses:
 
-* **Easy** → Numbers between **1 and 100**
-* **Medium** → Numbers between **1 and 200**
-* **Hard** → Numbers between **1 and 300**
+| Difficulty | Number Range | Max Guesses |
+| ---------- | ------------ | ----------- |
+| Easy       | 1 – 100      | 7           |
+| Medium     | 1 – 200      | 6           |
+| Hard       | 1 – 300      | 5           |
 
-Each difficulty increases the guessing range, making the game more challenging.
-
----
-
-## ⏱️ Guess Limit
-
-* The player has a maximum of **7 guesses** per round
-* Remaining guesses are displayed each turn
-* If the limit is reached, the game ends and reveals the secret number
+Harder modes give fewer guesses, increasing the challenge.
 
 ---
 
-## 🏆 Best Score System
+## 🏆 Best Score System (Per Difficulty)
 
-* The game tracks the **best score** (fewest guesses)
-* The best score is saved in a file called:
+* Best scores are tracked **individually** for Easy, Medium, and Hard modes
+* Scores are stored in:
 
   ```
   best score.json
   ```
-* The score persists even after closing the program
-* If a new best score is achieved, it replaces the old one
+* The file structure looks like this:
 
-This introduces basic **file handling and persistence**.
+  ```json
+  {
+    "easy": null,
+    "medium": null,
+    "hard": null
+  }
+  ```
+* When a player wins:
+
+  * If no score exists, it is saved
+  * If the new score uses fewer guesses, it replaces the old one
+
+This introduces real **state persistence** using JSON.
 
 ---
 
 ## ✨ Features
 
-* Difficulty selection
-* Guess limit enforcement
+* Difficulty-based gameplay rules
+* Dynamic guess limits
 * Input validation (no crashes on invalid input)
-* Replay option
-* Persistent best score tracking
-* Clean, structured code using functions
+* Per-difficulty best score tracking
+* Persistent storage using JSON
+* Replay option after each round
+* Clean and readable code structure
 
 ---
 
 ## 🧠 Concepts Demonstrated
 
-* Random number generation
-* Functions and return values
-* Loops and control flow
+* Functions and program structure
+* Conditional logic and control flow
 * Exception handling (`try / except`)
+* Random number generation
 * File I/O using JSON
-* State persistence across runs
+* Persistent state across program runs
 
 ---
 
 ## 🏗️ How The Game Works
 
-1. The game displays a difficulty menu
-2. The player selects a valid difficulty
-3. A secret number is generated
-4. The player makes guesses (up to 7)
-5. Feedback is given after each guess
-6. The game ends with a win or loss
-7. Best score is checked and saved if needed
-8. The player can choose to play again
+1. Display difficulty selection menu
+2. Player selects a valid difficulty
+3. Game sets number range and guess limit
+4. Player enters guesses
+5. Game provides feedback after each guess
+6. Game ends with a win or loss
+7. Best score is checked and updated per difficulty
+8. Player chooses whether to replay
 
 ---
 
@@ -98,43 +107,39 @@ Choose Your Difficulty
 2. Medium (1 - 200)
 3. Hard   (1 - 300)
 
-Enter your difficulty (1, 2, or 3): 1
-Guesses remaining: 7
-Enter your guess: 50
-Your guess is too high, try again!
-
-Guesses remaining: 6
-Enter your guess: 25
+Enter your difficulty (1, 2, or 3): 3
+Guesses remaining: 5
+Enter your guess: 150
 Your guess is too low, try again!
 
-Guesses remaining: 5
-Enter your guess: 37
-You guessed the correct number in 3 guesses.
-🎉 New best score: 3 guesses!
-
-Do you want to play again? Yes/No: no
+Guesses remaining: 4
+Enter your guess: 225
+You guessed the correct number in 2 guesses.
+🎉 New BEST score for HARD mode: 2 guesses!
 ```
 
 ---
 
 ## 📚 Learning Value
 
-From this project, someone can learn:
+This project teaches:
 
-* How to design a full console game
-* How to persist data using JSON
-* How to handle invalid user input safely
-* How to structure Python programs cleanly
-* How to add replayable game mechanics
+* How to design scalable game logic
+* How to separate rules by difficulty
+* How to persist and manage structured data
+* How to write safer input-handling code
+* How to build replayable terminal games
 
 ---
 
 ## 🚀 Ideas for Future Improvements
 
-* Difficulty-based guess limits
-* Separate best scores per difficulty
+* Leaderboard across players
 * Player name support
-* Leaderboard system
-* GUI version of the game
+* Timed game mode
+* Hint system
+* GUI version using Tkinter or PySimpleGUI
 
 ---
+
+This project is a strong example of transitioning from **basic Python scripts** to **structured, stateful applications**.
