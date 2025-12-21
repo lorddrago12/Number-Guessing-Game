@@ -2,7 +2,6 @@
 
 A polished terminal-based number guessing game written in Python. This version features **difficulty-based rules**, **dynamic guess limits**, **input validation**, **replay support**, and a **persistent best score system per difficulty** stored in a JSON file.
 
-This README explains the project clearly for **future you** and **anyone else** who wants to understand or learn from the code.
 
 ---
 
